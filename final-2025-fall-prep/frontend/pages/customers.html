@@ -1,0 +1,128 @@
+<div class="container mt-3">
+  <!-- Button trigger modal -->
+  <div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#add-customer-modal"
+    >
+      Add Customer
+    </button>
+  </div>
+  <br />
+  <select class="form-select" id="customers-list">
+    <option selected disabled>Loading customers...</option>
+  </select>
+  <hr />
+  <div>
+    <table class="table table-striped" id="customer-meals">
+      <thead>
+        <tr>
+          <th>Food name</th>
+          <th>Food brand</th>
+          <th>Meal date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3" class="text-center text-muted">Please select a customer to view meals</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="add-customer-modal"
+  tabindex="-1"
+  aria-labelledby="add-customer-label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="add-customer-form">
+        <div class="modal-header">
+          <h5 class="modal-title" id="add-customer-label">Add Customer</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 mt-3">
+            <label for="first_name" class="form-label">First name: <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="first_name"
+              placeholder="Enter first name"
+              name="first_name"
+              required
+              maxlength="100"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="last_name" class="form-label">Last name: <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="last_name"
+              placeholder="Enter last name"
+              name="last_name"
+              required
+              maxlength="100"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="birth_date" class="form-label">Birth date: <span class="text-danger">*</span></label>
+            <input
+              type="date"
+              class="form-control"
+              id="birth_date"
+              name="birth_date"
+              required
+              max="2025-07-02"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save Customer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* 
+    1. Populate the <select> HTML element with the id `customers-list` with all 
+       customers from the database (15 points)
+    2. When the select list item changes (other customer is selected) fetch all 
+       meals for the selected customer and populate the table with the id `customer-meals`
+       with the meals you get from the database (15 points)
+    3. Use the modal with id `add-customer-modal` to add customer to the database. (15 points)
+    3.1. After the customer has been added successfully, refresh the list of customers
+         in the select list with the id `customers-list` (5 points)
+   */
+  
+  // Initialize the customers service when this page loads
+  $(document).ready(function() {
+    if (typeof CustomersService !== 'undefined') {
+      CustomersService.init();
+    } else {
+      console.error('CustomersService not found!');
+    }
+  });
+</script>

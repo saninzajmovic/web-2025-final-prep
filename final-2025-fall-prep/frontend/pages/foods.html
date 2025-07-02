@@ -1,0 +1,37 @@
+<div class="container mt-3">
+  <div>
+    <table class="table table-striped" id="foods-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Image</th>
+          <th>Energy</th>
+          <th>Protein</th>
+          <th>Fat</th>
+          <th>Fiber</th>
+          <th>Carbs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="8" class="text-center text-muted">Loading foods...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+  // Initialize when this section is loaded by spapp
+  $(document).ready(function() {
+    // Small delay to ensure the DOM is ready
+    setTimeout(function() {
+      if (typeof FoodsService !== 'undefined') {
+        console.log('Initializing FoodsService...');
+        FoodsService.init();
+      } else {
+        console.error('FoodsService not found!');
+      }
+    }, 100);
+  });
+</script>
