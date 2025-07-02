@@ -16,12 +16,13 @@ class ExamDao {
           $dbName = 'webfinal';
           $username = 'root';
           $password = 'root';
+		  $port = 3306;
 
           /** TODO
            * Create new conn
            */
           $this->conn = new PDO(
-            "mysql:host=" . $host . ";dbname=" . $dbName,
+            "mysql:host=" . $host . ";port=" . $port . ";dbname=" . $dbName,
             $username,
             $password,
             [
